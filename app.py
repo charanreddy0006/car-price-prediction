@@ -10,7 +10,7 @@ st.title("🚗 Car Price Prediction System")
 st.write("Enter car details and click Predict")
 
 # User inputs
-vehicle_age = st.number_input("Vehicle Age (years)", 0, 3, 5)
+vehicle_age = st.number_input("Vehicle Age (years)", 0, 30, 5)
 km_driven = st.number_input("Kilometers Driven", 0, 500000, 50000)
 mileage = st.number_input("Mileage (km/l)", 5.0, 40.0, 20.0)
 engine = st.number_input("Engine Capacity (CC)", 500, 5000, 1200)
@@ -48,6 +48,7 @@ input_data = input_data[columns]
 if st.button("Predict Price"):
     prediction = model.predict(input_data)
     st.success(f"💰 Predicted Car Price: ₹ {int(prediction[0]):,}")
+
 
 
 
