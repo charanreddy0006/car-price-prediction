@@ -19,7 +19,7 @@ seats = st.selectbox("Number of Seats", [4, 5, 6, 7])
 
 fuel_type = st.selectbox("Fuel Type", ["Petrol", "Diesel", "CNG"])
 seller_type = st.selectbox("Seller Type", ["Individual", "Dealer"])
-transmission = st.selectbox("Transmission Type", ["Manual", "Automatic","Amt"])
+transmission = st.selectbox("Transmission Type", ["Manual", "Automatic"])
 
 # Prepare input data
 input_data = pd.DataFrame({
@@ -32,8 +32,8 @@ input_data = pd.DataFrame({
     "fuel_type_Diesel": [1 if fuel_type == "Diesel" else 0],
     "fuel_type_Petrol": [1 if fuel_type == "Petrol" else 0],
     "seller_type_Individual": [1 if seller_type == "Individual" else 0],
-    "transmission_type_Manual": [1 if transmission == "Manual" else 0],
-    "transmmission_type_Amt": [1 if transmission == "Amt" else 0]
+    "transmission_type_Manual": [1 if transmission == "Manual" else 0]
+    
 })
 
 # Add missing columns
@@ -48,5 +48,6 @@ input_data = input_data[columns]
 if st.button("Predict Price"):
     prediction = model.predict(input_data)
     st.success(f"💰 Predicted Car Price: ₹ {int(prediction[0]):,}")
+
 
 
